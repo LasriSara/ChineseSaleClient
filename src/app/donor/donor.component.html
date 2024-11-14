@@ -1,0 +1,107 @@
+<div class="my-css">
+    
+    <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success mr-2" (click)="openNew()"></button>
+    <button pButton pRipple label="רשימת רוכשים" icon="pi pi-book" class="p-button-success mr-2"
+    (click)="GetPurchesesDetailsa()"> </button>
+    
+    <div class="flex align-items-center justify-content-between">
+      <h5 class="m-0">Manage listDonors</h5>
+
+      <span class="p-input-icon-left">
+        <i class="pi pi-search"></i>
+        <input pInputText type="text" [(ngModel)]="firstName" placeholder="Search by name" (keyup)="getDonorsSearch()" class="search-input" />
+        
+        <i class="pi pi-search"></i>
+        <input pInputText type="text" [(ngModel)]="email" placeholder="Search by email" (keyup)="getDonorsSearch()" class="search-input" />
+        
+        <i class="pi pi-search"></i>
+        <input pInputText type="text" [(ngModel)]="name" placeholder="Search by gift productName" (keyup)="getDonorsSearch()" class="search-input" />
+      </span>
+      
+    </div>
+
+  
+    <p-table  [value]="listDonors" [rows]="10" [paginator]="true"
+     [globalFilterFields]="['donorId','firstName','lastName','phone','email','myType']"
+      [(selection)]="selectedIndex" [rowHover]="true" dataKey="DonorId"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
+      <ng-template pTemplate="header">
+        <tr>
+                <th style="width: 3rem"></th>
+                <th pSortableColumn="donorId">donorId <p-sortIcon field="donorId"></p-sortIcon></th>
+
+                <th pSortableColumn="firstName">firstName <p-sortIcon field="firstName"></p-sortIcon></th>
+                <th pSortableColumn="lastName">lastName <p-sortIcon field="lastName"></p-sortIcon></th>
+
+                <th pSortableColumn="phone">phone <p-sortIcon field="phone"></p-sortIcon></th>
+                <th pSortableColumn="email">email <p-sortIcon field="email"></p-sortIcon></th>
+                <th pSortableColumn="myType">myType <p-sortIcon field="myType"></p-sortIcon></th>
+
+
+
+              
+              
+
+
+                 <th></th>
+             </tr>
+         </ng-template>
+         <ng-template pTemplate="body" let-donor>
+             <tr>
+                
+                 <td>
+                 </td>
+                
+                 <td>{{donor.donorId}}</td>
+                 <td>{{donor.firstName}}</td>
+                 <td>{{donor.lastName}}</td>
+                 <td>{{donor.phone}}</td>  
+                 <td>{{donor.email}}</td>
+                 <td>{{donor.myType}}</td>  
+
+
+                 <td>
+                  
+                         <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning"
+                        (click)="delete(donor.donorId)" ></button>
+                     
+                        <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2"
+                        (click)="updateDonor(donor)"></button>
+                      
+                       
+                        <button pButton pRipple icon="pi pi-info" class="p-button-rounded p-button-info" (click)="GetDonorDetailsa(donor.donorId)"></button>
+
+                       
+                        
+                        
+                        
+                 </td>
+    
+             </tr>
+           
+         </ng-template>
+    
+     </p-table>
+ 
+ 
+  
+  
+ 
+ 
+ </div> 
+ 
+ <app-add-edit-donor [(isOpen)]="donorDialog" [Donor]="donor"></app-add-edit-donor> 
+
+ 
+ 
+ 
+ 
+ <p-dialog [(visible)]="isOpen" [style]="{width: '450px'}" header="donorDetails" [modal]="true" styleClass="p-fluid">
+    <div *ngIf="donorDetails.length > 0">
+        <ul>
+          <li *ngFor="let detail of donorDetails">{{ detail }}</li>
+        </ul>
+      </div> 
+  </p-dialog>  
+
+

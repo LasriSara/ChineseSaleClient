@@ -1,0 +1,54 @@
+.form-group{
+    padding-bottom: 10px;
+}
+
+.my-css{
+    height: calc(100vh - 300px);
+    width: 80vw;
+    overflow: auto;
+    margin-left: auto;
+    margin-right: auto;
+    direction: rtl;
+}
+
+
+  .my-css .p-dialog {
+    display: none;
+    z-index: 1;
+
+}
+.pi .pi-plus
+
+.my-css .p-dialog .p-button {
+    display: block;
+}
+
+td, th{
+    border-style: groove;
+    border-width: 1px;
+    padding: 5px;
+}
+
+.selected {
+    background-color: lightpink;
+}
+
+
+.table-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.my-toolbar{
+    height: 200px;
+}
+.my-css{
+    height: calc(100vh - 300px);
+    width: 80vw;
+    overflow: auto;
+    margin-left: auto;
+    margin-right: auto;
+    direction: rtl;
+}
+
+

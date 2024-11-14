@@ -1,0 +1,177 @@
+
+<style>
+  body {
+    background-color: #f0f0f0;
+    font-family: 'Arial', sans-serif;
+  }
+
+  .tips {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 18px;
+    color: #3498db;
+  }
+
+  .container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .card {
+    position: relative;
+    width: 400px;
+    height: 250px;
+    background-color: #efe9e9; /* אפור */
+    border-radius: 15px;
+    padding: 20px;
+    color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+
+  .front,
+  .back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    transition: transform 0.5s;
+  }
+
+  .card:hover .front {
+    transform: rotateY(180deg);
+  }
+
+  .card:hover .back {
+    transform: rotateY(0deg);
+  }
+
+  .type img {
+    width: 70px;
+    height: 40px;
+  }
+
+  .card_number {
+    font-size: 20px;
+    letter-spacing: 3px;
+    margin-top: 15px;
+    display: block;
+  }
+
+  .date {
+    margin-top: 15px;
+    font-size: 18px;
+  }
+
+  .fullname {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 15px;
+    display: block;
+  }
+
+  .company {
+    font-size: 18px;
+    margin-top: 15px;
+    display: block;
+  }
+
+  label {
+    display: block;
+    margin-top: 15px;
+    font-size: 14px;
+    color: #3498db;
+  }
+
+  input {
+    width: 200px; /* יותר רחב */
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+
+  .col1 {
+    flex: 1;
+    margin-right: 20px;
+  }
+
+  .col2 {
+    flex: 1;
+  }
+
+  button.buy {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #2ecc71;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+</style>
+
+<div class="tips">
+<div class="container">
+  <div class="col1">
+    <div class="card">
+      <div class="front">
+        <div class="type">
+        </div>
+        <span class="chip"></span>
+        <span class="card_number">&#x25CF;&#x25CF;&#x25CF;&#x25CF; &#x25CF;&#x25CF;&#x25CF;&#x25CF; &#x25CF;&#x25CF;&#x25CF;&#x25CF; &#x25CF;&#x25CF;&#x25CF;&#x25CF; </span>
+        <div class="date"><span class="date_value">MM / YYYY</span></div>
+        <span class="fullname">FULL NAME</span>
+      </div>
+      <div class="back">
+        <div class="magnetic"></div>
+        <div class="bar"></div>
+        <span class="seccode">&#x25CF;&#x25CF;&#x25CF;</span>
+        <span class="chip"></span>
+        <span class="company">Random Bank of Random corporation</span>
+        <span class="card_number">&#x25CF;&#x25CF;&#x25CF;&#x25CF; &#x25CF;&#x25CF;&#x25CF;&#x25CF; &#x25CF;&#x25CF;&#x25CF;&#x25CF; &#x25CF;&#x25CF;&#x25CF;&#x25CF; </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="col2">
+    <label>Card Number</label>
+    <input class="number" type="text" ng-model="ncard" maxlength="19" onkeypress='return event.charCode >= 48 && event.charCode <= 57' />
+    <label>Cardholder name</label>
+    <input class="inputname" type="text" placeholder="" />
+    <label>Expiry date</label>
+    <input class="expire" type="text" placeholder="MM / YYYY" />
+    <label>Security Number</label>
+    <input class="ccv" type="text" placeholder="CVC" maxlength="3" onkeypress='return event.charCode >= 48 && event.charCode <= 57' />
+    <!-- <button class="buy"  (click)="redirectToPaymentSuccess(); makePayment( orderIds)"> -->
+      <button class="buy" (click)=" makePayment(orderIds)">Make Payment
+
+      <i class="material-icons">lock</i> Pay --.-- €
+    </button>
+      </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

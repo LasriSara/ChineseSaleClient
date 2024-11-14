@@ -1,0 +1,40 @@
+<div class="registration-container">
+  <div class="registration-form">
+    <div class="p-field">
+    
+      <label for="email">Email</label>
+      <br>
+      <input id="email" type="text" pInputText [(ngModel)]="user.Email" />
+
+    </div>
+    <div class="p-field">
+      <label for="firstName">First Name</label>
+      <br>
+      <input id="firstName" type="text" pInputText [(ngModel)]="user.FirstName" />
+    </div>
+    <div class="p-field">
+      <label for="lastName">Last Name</label>
+      <br>
+      <input id="lastName" type="text" pInputText [(ngModel)]="user.LastName" />
+    </div>
+    <div class="p-field">
+      <label for="password">Password</label>
+      <br>
+      <input id="password" type="password" pInputText [(ngModel)]="user.PassWord" />
+    </div>
+    <div class="p-field">
+      <label for="phone">Phone Number</label>
+      <br>
+      <input id="phone" type="text" pInputText [(ngModel)]="user.Phone" />
+    </div>
+    <p-button class="register-button" (onClick)="register()" label="Register" icon="pi pi-user"></p-button>
+  </div>
+</div>
+
+
+
+
+
+
+
+ 

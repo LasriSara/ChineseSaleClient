@@ -1,0 +1,51 @@
+
+      <p-dialog [(visible)]="isOpen" [style]="{width: '450px'}" header="Product Details" [modal]="true" styleClass="p-fluid">
+        
+        <div class="p-field">
+          <label for="ProductId">ProductId</label>
+          <input ProductId="ProductId" type="number" pInputText [(ngModel)]="Product.productId" />
+        </div>
+
+        <div class="p-field">
+          <label for="Name">name</label>
+          <input name="Name" type="text" pInputText [(ngModel)]="Product.name" />
+          <small class="p-error" *ngIf="submitted && !Product.name">Name is required.</small>
+
+        </div>
+
+      
+        <div class="p-field">
+                <label for="DonorId">DonorId</label>
+                <input id="DonorId" type="number" pInputText [(ngModel)]="Product.donorId" />
+                <small class="p-error" *ngIf="submitted && !Product.donorId">donorId is required.</small>
+
+              </div> 
+
+        <div class="p-field">
+          <label for="Price">Price</label>
+          <input Price="Price" type="number" pInputText [(ngModel)]="Product.price" />
+          <small class="p-error" *ngIf="submitted && !Product.price">price is required.</small>
+
+        </div>
+
+        <div class="p-field">
+          <label for="CategoryId">CategoryId</label>
+          <input CategoryId="CategoryId" type="number" pInputText [(ngModel)]="Product.categoryId" />
+          <small class="p-error" *ngIf="submitted && !Product.categoryId">categoryId is required.</small>
+
+        </div> 
+
+        <div class="p-field">
+          <label for="urlImage">UrlImage</label>
+          <input UrlImage="UrlImage" type="text" pInputText [(ngModel)]="Product.urlImage" />
+          <small class="p-error" *ngIf="submitted && !Product.urlImage">urlImage is required.</small>
+
+        </div> 
+         <button *ngIf="isNew==false" pButton type="button" label="Save" class="p-button-success" (click)=saveGift()></button>
+
+        <button pButton type="button" label="Cancel" class="p-button-secondary" (click)=hideDialog()></button>
+
+      </p-dialog>   
+ 
+
+  

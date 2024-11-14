@@ -1,0 +1,50 @@
+
+      <p-dialog [(visible)]="isOpen" [style]="{width: '450px'}" header="Donor Details" [modal]="true" styleClass="p-fluid">
+     
+        <div class="p-field">
+        <label for="donorId">donorId</label>
+        <input donorId="DonorId" type="number" pInputText [(ngModel)]="Donor.donorId" />
+        </div>
+     
+        <div class="p-field">
+          <label for="FirstName">FirstName</label>
+          <input name="FirstName" type="text" pInputText [(ngModel)]="Donor.firstName" />
+          <small class="p-error" *ngIf="submitted && !Donor.firstName">FirstName is required.</small>
+
+        </div>
+
+      
+        <div class="p-field">
+                <label for="lastName">lastName</label>
+                <input LastName="lastName" type="text" pInputText [(ngModel)]="Donor.lastName" />
+                <small class="p-error" *ngIf="submitted && !Donor.lastName">lastName is required.</small>
+
+              </div> 
+
+        <div class="p-field">
+          <label for="Phone">Phone</label>
+          <input Price="Phone" type="text" pInputText [(ngModel)]="Donor.phone" />
+          <small class="p-error" *ngIf="submitted && !Donor.phone">phone is required.</small>
+
+        </div>
+
+        <div class="p-field">
+            <label for="Email">Email</label>
+            <input id="Email" name="Email" type="text" pInputText [(ngModel)]="Donor.email" />
+            <small class="p-error" *ngIf="submitted && !Donor.email">email is required.</small>
+          </div>
+
+        <div class="p-field">
+          <label for="myType">MyType</label>
+          <input MyType="MyType" type="number" pInputText [(ngModel)]="Donor.myType" />
+          <small class="p-error" *ngIf="submitted && !Donor.myType">myType is required.</small>
+
+        </div> 
+         <button *ngIf="isNew==false" pButton type="button" label="Save" class="p-button-success" (click)=saveDonor()></button>
+
+        <button pButton type="button" label="Cancel" class="p-button-secondary" (click)=hideDialog()></button>
+
+      </p-dialog>   
+ 
+
+  

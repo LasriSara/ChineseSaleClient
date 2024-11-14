@@ -1,0 +1,130 @@
+<div class="my-css">
+
+    <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success mr-2" (click)="openNew()"></button>
+
+    <button pButton pRipple label="Sort by Max Quantity" icon="pi pi-arrow-down" class="p-button-success mr-2"
+        (click)="getSortedGiftsByMaxQuantitya()"></button>
+
+    <button pButton pRipple label="Sort by Price" icon="pi pi-arrow-up" class="p-button-success"
+        (click)="getSortedGiftsByPricea()"></button>
+
+
+
+    <p-table [value]="listProduct" [rows]="5" [paginator]="true"
+        [globalFilterFields]="['productId','name','donorId','price','categoryId','urlImage']"
+        [(selection)]="selectedIndex" [rowHover]="true" dataKey="ProductId"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
+        <ng-template pTemplate="caption">
+            <div class="flex align-items-center justify-content-between">
+                <h5 class="m-0">Manage listProduct</h5>
+
+                <span class="p-input-icon-left">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" [(ngModel)]="name" placeholder="Search by name" class="search-input"
+                        (keyup)="getGiftSearch()" />
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" [(ngModel)]="donorName" placeholder="Search by donorName" class="search-input"
+                        (keyup)="getGiftSearch()" />
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" [(ngModel)]="numOfPurcheses" class="search-input"
+                        placeholder="Search by gift numOfPurcheses" (keyup)="getGiftSearch()" />
+
+
+
+
+
+                </span>
+
+
+
+
+            </div>
+
+
+
+
+
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="width: 3rem">
+                </th>
+
+
+
+
+                <th pSortableColumn="productId">productId <p-sortIcon field="productId"></p-sortIcon></th>
+                <th pSortableColumn="name">name <p-sortIcon field="name"></p-sortIcon></th>
+                <th pSortableColumn="donorId">donorId <p-sortIcon field="donorId"></p-sortIcon></th>
+                <th pSortableColumn="price">price <p-sortIcon field="price"></p-sortIcon></th>
+                <th pSortableColumn="categoryId">categoryId <p-sortIcon field="categoryId"></p-sortIcon></th>
+                <th pSortableColumn="urlImage">urlImage <p-sortIcon field="urlImage"></p-sortIcon></th>
+
+
+                <th></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-product>
+            <tr>
+                <td>
+                </td>
+
+                <td>{{product.productId}}</td>
+                <td>{{product.name}}</td>
+                <td>{{product.donorId}}</td>
+                <td>{{product.price | currency:'₪'}}</td>
+                <td>{{product.categoryId}}</td>
+                <td><img class="img" [src]="'../../assets/pictures/'+product.urlImage" style="width: 100px;" /></td>
+
+
+                <td>
+
+                    <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning"
+                        (click)="delete(product.productId)"></button>
+
+                    <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2"
+                        (click)="updateProduct(product)"></button>
+
+                    <button pButton pRipple icon="pi pi-info" class="p-button-rounded p-button-info"
+                        (click)="GetGiftCardsa(product)"></button>
+
+
+                </td>
+
+            </tr>
+        </ng-template>
+
+    </p-table>
+
+
+
+
+
+
+</div>
+
+<app-add-product [(isOpen)]="productDialog" [Product]="Product"></app-add-product>
+
+
+
+
+<p-dialog [(visible)]="isOpen" [style]="{width: '450px'}" header="Product Details" [modal]="true" styleClass="p-fluid">
+    <div *ngIf="selectedProduct">
+        <div *ngFor="let order of selectedProduct">
+            <p>OrderItemId: {{ order.orderItemId }}</p>
+            <p>OrderId: {{ order.orderId }}</p>
+            <p>ProductId: {{ order.productId }}</p>
+            <p>Quantity: {{ order.quantity }}</p>
+            <p> -------------------------------</p>
+
+            <div *ngIf="order.Product">
+                <p>Products:</p>
+                <ul>
+                    <li *ngFor="let product of order.Product">
+                        {{ product.name }} - {{ product.price | currency:'USD' }}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</p-dialog>
